@@ -135,7 +135,8 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
-    console.log("I am printing this from javascript");
+    let load = Prompt();
+
     (function () {
         'use strict';
         window.addEventListener('load', function () {
@@ -156,7 +157,8 @@
 
     document.getElementById("colorButton").addEventListener("click", function() {
       // notify("Sample Message", "success")
-      notifyModal("title","<em>hello, santosh</em>","success","Are you sure")
+      //notifyModal("title","<em>hello, santosh</em>","success","Are you sure")
+      load.notifyModal()
     })
     const elem = document.getElementById('reservation-dates');
       const rangepicker = new DateRangePicker(elem, {
@@ -175,8 +177,21 @@
         title: title,
         html: text,
         icon: icon,
-        confirmationButtonText: confirmationButtonText,
+        confirmButtonText: confirmationButtonText,
       })
+    }
+
+    function Prompt() {
+      let toast = function() {
+        notify("Sample Message", "success")
+      }
+      let success = function() {
+        notifyModal("title","<em>hello, santosh</em>","success","Are you sure");
+      }
+      return {
+        noti:toast,
+        notifyModal: success,
+      }
     }
 
   </script>
